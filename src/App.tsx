@@ -1,11 +1,12 @@
 import './App.css'
 import 'moment/locale/zh-cn';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
+import 'antd/dist/antd.variable.min.css';
 import './index.css';
 import routes from "./router";
 import {NavLink, useRoutes} from "react-router-dom";
 import {FileOutlined, HomeOutlined} from "@ant-design/icons";
-
+import {Button, ConfigProvider} from "antd";
 function App() {
     const views = useRoutes(routes)
     const navLinks = [
@@ -24,23 +25,31 @@ function App() {
     const computeClassName = ({isActive}: { isActive: any }) => {
         return isActive ? activeClassName : ""
     }
+
+
+    ConfigProvider.config({
+        theme: {
+            primaryColor: '#25b864',
+        },
+    });
     return (
-        <div className="App">
-            <div>
-                <div className={'flex justify-center items-center w-full'}>
-                    <div className='content p-6'>
-                        <div>
+        <ConfigProvider prefixCls="custom">
+            <div className="App">
+                <div className={'flex justify-center items-center w-full flex-col'}>
+                    <div className='content mt-6 flex flex-col'>
+                        <Button type={'primary'}>dasd</Button>
+                        <div className={'text-3xl text-gray-500'}>
                             XXXX
                         </div>
-                        <div>
+                        <div className={'text-sm text-gray-400'}>
                             ASDASD大苏打
                         </div>
                     </div>
-                    <ul>
+                    <div className='content mt-3 flex items-end flex-col'>
                         {
                             navLinks.map((item, index) => {
                                 return (
-                                    <li key={index}>
+                                    <div key={index}>
                                         <NavLink
                                             to={item?.path}
                                             end
@@ -49,16 +58,15 @@ function App() {
                                             {item?.name}
                                             {item?.icon}
                                         </NavLink>
-                                    </li>
+                                    </div>
                                 )
                             })
                         }
-                    </ul>
+                    </div>
                 </div>
                 {views}
             </div>
-
-        </div>
+        </ConfigProvider>
     )
 }
 
