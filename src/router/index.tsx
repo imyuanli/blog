@@ -2,7 +2,7 @@ import React, {lazy, Suspense} from 'react'
 import {RouteObject} from 'react-router-dom'
 // 路由懒加载
 const lazyLoad = (path: string) => {
-    const Comp = lazy(() => import(/* @vite-ignore */`../pages/${path}.tsx`))
+    const Comp = lazy(() => import(/* @vite-ignore */`../pages/${path}/index.tsx`))
     return (
         <Suspense fallback={<>加载中...</>}>
             <Comp/>
@@ -13,7 +13,11 @@ const lazyLoad = (path: string) => {
 const routes: RouteObject[] = [
     {
         path: '/',
-        element: lazyLoad("index")
-    }
+        element: lazyLoad("dashboard")
+    },
+    {
+        path: '/article',
+        element: lazyLoad("article")
+    },
 ]
 export default routes
