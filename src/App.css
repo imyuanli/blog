@@ -1,3 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App{
+    min-height: 100vh;
+}
+.header{
+    font-size: 22px;
+    font-weight: 450;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 54px;
+    padding: 0 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid #e1e4e8;
+    backdrop-filter: blur(10px);
+}
+
 .content{
     max-width: 880px;
     width: 90%;
