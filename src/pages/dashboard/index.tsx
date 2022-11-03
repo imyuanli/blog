@@ -206,9 +206,6 @@ const Index = () => {
                     </div>
                 </Card>
             </div>
-            <BackTop className={'back-top'}>
-                <RocketOutlined className={'text-4xl'}/>
-            </BackTop>
         </>
     )
 }

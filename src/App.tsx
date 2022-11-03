@@ -9,10 +9,10 @@ import {NavLink, useRoutes} from "react-router-dom";
 import {
     createFromIconfontCN,
     FileOutlined,
-    HomeOutlined,
+    HomeOutlined, RocketOutlined,
     SearchOutlined
 } from "@ant-design/icons";
-import {Button, ConfigProvider, Layout} from "antd";
+import {BackTop, Button, ConfigProvider, Layout} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 
@@ -104,6 +104,9 @@ function App() {
                         {views}
                     </div>
                 </div>
+                <BackTop className={'back-top'}>
+                    <RocketOutlined className={'text-4xl'}/>
+                </BackTop>
             </div>
         </ConfigProvider>
     )

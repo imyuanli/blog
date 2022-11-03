@@ -9,9 +9,3 @@
     opacity: 0.3;
     transition: 0.1s ease background-color;
 }
-
-.back-top {
-    position: fixed;
-    bottom: 32px;
-    right: 0;
-}
