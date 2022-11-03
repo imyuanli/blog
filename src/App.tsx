@@ -7,20 +7,14 @@ import './index.css';
 import routes from "./router";
 import {NavLink, useRoutes} from "react-router-dom";
 import {
-    AndroidOutlined,
-    AppleOutlined,
-    CheckOutlined,
-    CloseOutlined,
+    createFromIconfontCN,
     FileOutlined,
-    HomeOutlined, IeOutlined,
+    HomeOutlined,
     SearchOutlined
 } from "@ant-design/icons";
-import {Button, Calendar, Card, ConfigProvider, Layout, Rate, Switch} from "antd";
+import {Button, ConfigProvider, Layout} from "antd";
 import {useLocalStorageState} from "ahooks";
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
-
-const {Header, Footer, Sider, Content} = Layout;
+import {IconFont} from './utils/util'
 
 function App() {
     //router
@@ -33,8 +27,9 @@ function App() {
             defaultValue: 'custom-default',
         },
     );
-    const handlePrefixChange = (prefix: boolean) => {
-        if (prefix) {
+    const handlePrefixChange = (val: number) => {
+        console.log(val)
+        if (val == 1) {
             setPrefix('custom-default')
         } else {
             setPrefix('custom-dark')
@@ -58,6 +53,8 @@ function App() {
     const computeClassName = ({isActive}: { isActive: any }) => {
         return isActive ? activeClassName : ""
     }
+
+
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
@@ -66,8 +63,8 @@ function App() {
                         Miracle
                     </div>
                     <div className={'flex justify-center items-center'}>
-                        <Button className={'mr-3 rounded-lg'} icon={<SearchOutlined/>}/>
-                        <>
+                        <Button className={'mr-3 rounded-lg'} icon={<SearchOutlined/>} type={'primary'}/>
+                        <div className={'flex justify-center items-center'}>
                             {
                                 routerArr.map((item, index) => {
                                     return (
@@ -76,18 +73,30 @@ function App() {
                                             className={'text-base mr-3'}
                                             key={index}
                                         >
-                                            <Button className={'rounded-lg'} icon={item?.icon}/>
+                                            <Button type={'primary'} className={'rounded-lg'} icon={item?.icon}/>
                                         </NavLink>
                                     )
                                 })
                             }
-                        </>
-                        <Button className={'rounded-lg'} icon={<DarkModeOutlinedIcon style={{fontSize: 22}}/>}/>
-                        <Switch
-                            checkedChildren={<WbSunnyOutlinedIcon style={{fontSize: 20}}/>}
-                            unCheckedChildren={<DarkModeOutlinedIcon style={{fontSize: 22}}/>}
-                            defaultChecked
-                        />
+                        </div>
+                        {
+                            prefix == 'custom-dark' ?
+                                <Button className={'rounded-lg'}
+                                        icon={<IconFont type={'icon-sun'} style={{fontSize: 20}}/>}
+                                        onClick={() => {
+                                            handlePrefixChange(1)
+                                        }}
+                                        type={'primary'}
+                                />
+                                :
+                                <Button className={'rounded-lg'}
+                                        icon={<IconFont type={'icon-night'} style={{fontSize: 18}}/>}
+                                        onClick={() => {
+                                            handlePrefixChange(0)
+                                        }}
+                                        type={'primary'}
+                                />
+                        }
                     </div>
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
