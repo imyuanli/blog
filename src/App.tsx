@@ -63,7 +63,7 @@ function App() {
                         Miracle
                     </div>
                     <div className={'flex justify-center items-center'}>
-                        <Button className={'mr-3 rounded-lg'} icon={<SearchOutlined/>} type={'primary'}/>
+                        <Button className={'mr-3 rounded-lg bg-purple-300'} icon={<SearchOutlined/>}/>
                         <div className={'flex justify-center items-center'}>
                             {
                                 routerArr.map((item, index) => {
@@ -73,7 +73,7 @@ function App() {
                                             className={'text-base mr-3'}
                                             key={index}
                                         >
-                                            <Button type={'primary'} className={'rounded-lg'} icon={item?.icon}/>
+                                            <Button className={'rounded-lg bg-purple-300'} icon={item?.icon}/>
                                         </NavLink>
                                     )
                                 })
@@ -81,26 +81,24 @@ function App() {
                         </div>
                         {
                             prefix == 'custom-dark' ?
-                                <Button className={'rounded-lg'}
+                                <Button className={'rounded-lg bg-purple-300'}
                                         icon={<IconFont type={'icon-sun'} style={{fontSize: 20}}/>}
                                         onClick={() => {
                                             handlePrefixChange(1)
                                         }}
-                                        type={'primary'}
                                 />
                                 :
-                                <Button className={'rounded-lg'}
-                                        icon={<IconFont type={'icon-night'} style={{fontSize: 18}}/>}
+                                <Button className={'rounded-lg bg-purple-300'}
+                                        icon={<IconFont type={'icon-night'} style={{fontSize: 16}}/>}
                                         onClick={() => {
                                             handlePrefixChange(0)
                                         }}
-                                        type={'primary'}
                                 />
                         }
                     </div>
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
-                    <div style={{maxWidth: 1000}} className={'w-full'}>
+                    <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
                         {views}
                     </div>
                 </div>

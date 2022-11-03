@@ -16,7 +16,7 @@ const routes: RouteObject[] = [
         element: lazyLoad("dashboard")
     },
     {
-        path: '/article',
+        path: '/article/:id',
         element: lazyLoad("article")
     },
 ]
