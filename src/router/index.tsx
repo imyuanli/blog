@@ -19,5 +19,9 @@ const routes: RouteObject[] = [
         path: '/article/:id',
         element: lazyLoad("article")
     },
+    {
+        path: '/leavemsg',
+        element: lazyLoad("leavemsg")
+    },
 ]
 export default routes

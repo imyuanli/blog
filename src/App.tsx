@@ -63,7 +63,7 @@ function App() {
                         Miracle
                     </div>
                     <div className={'flex justify-center items-center'}>
-                        <Button className={'mr-3 rounded-lg bg-purple-300'} icon={<SearchOutlined/>}/>
+                        <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>
                         <div className={'flex justify-center items-center'}>
                             {
                                 routerArr.map((item, index) => {
@@ -73,7 +73,7 @@ function App() {
                                             className={'text-base mr-3'}
                                             key={index}
                                         >
-                                            <Button className={'rounded-lg bg-purple-300'} icon={item?.icon}/>
+                                            <Button className={'rounded-lg bg-green-500 text-white'} icon={item?.icon}/>
                                         </NavLink>
                                     )
                                 })
@@ -81,14 +81,14 @@ function App() {
                         </div>
                         {
                             prefix == 'custom-dark' ?
-                                <Button className={'rounded-lg bg-purple-300'}
+                                <Button className={'rounded-lg bg-green-500 text-white'}
                                         icon={<IconFont type={'icon-sun'} style={{fontSize: 20}}/>}
                                         onClick={() => {
                                             handlePrefixChange(1)
                                         }}
                                 />
                                 :
-                                <Button className={'rounded-lg bg-purple-300'}
+                                <Button className={'rounded-lg bg-green-500 text-white'}
                                         icon={<IconFont type={'icon-night'} style={{fontSize: 16}}/>}
                                         onClick={() => {
                                             handlePrefixChange(0)
