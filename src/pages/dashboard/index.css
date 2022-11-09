@@ -9,3 +9,11 @@
     opacity: 0.3;
     transition: 0.1s ease background-color;
 }
+
+.over-line{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
