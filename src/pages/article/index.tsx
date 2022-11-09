@@ -59,7 +59,7 @@ function Index() {
             copyEle.innerHTML = '复制';
             copyEle.className = 'copy-box';
             i.appendChild(copyEle);
-            copyEle.onclick= function (){
+            copyEle.onclick = function () {
                 let element = i.children[0]
                 if (element instanceof HTMLElement) {
                     copy(element?.innerText);
@@ -71,21 +71,25 @@ function Index() {
 
     return (
         <>
-            <div className={'w-full flex flex-col justify-center items-center mb-12'}>
-                <span className={'text-4xl mb-3 username relative'}>Card 组件</span>
-                <div className={'text-lg'}>
-                    <span>2022年05月14日</span>
-                    <Divider type={'vertical'}/>
-                    <span>
-                        <Tag icon={<TagOutlined/>}>vue</Tag>
-                        <Tag icon={<TagOutlined/>}>vue</Tag>
-                    </span>
-                </div>
-            </div>
+
             <Card className={'rounded-xl w-full'}>
-                <div className={''}>描述描述描述描述描述描述</div>
+                <div className={'w-full flex flex-col justify-center items-center mb-6'}>
+                    <div className={'text-3xl font-semibold  mb-3 relative'}>Card 组件</div>
+                    <div className={'text-base mb-3'}>
+                        <span>2022年05月14日</span>
+                    </div>
+                    <div>
+                        <Tag icon={<TagOutlined/>}>vue</Tag>
+                        <Tag icon={<TagOutlined/>}>vue</Tag>
+                    </div>
+                </div>
+                {/*<div className={''}>描述描述描述描述描述描述</div>*/}
                 <Divider/>
                 <div className={'break-words'} dangerouslySetInnerHTML={{__html: html}}/>
+                <Divider/>
+                <div className={'note-warning'}>
+                    本博客所有文章除特别声明外，均采用 CC BY-SA 4.0 协议 ，转载请注明出处，谢谢。
+                </div>
                 <Divider/>
                 <div className={'flex justify-between'}>
                     <div className={'cursor-pointer hover:text-blue-400'}>

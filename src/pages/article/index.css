@@ -20,3 +20,13 @@
 .pre-code:hover .copy-box{
     display: block;
 }
+
+.note-warning{
+    background-color: #fdf8ea;
+    border-color: #f0ad4e;
+    border-left-width: 0.5rem;
+    border-left-style: solid;
+    margin: 10px 0;
+    padding: 20px;
+    color: black;
+}

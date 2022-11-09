@@ -30,8 +30,8 @@ const routes: RouteObject[] = [
         element: lazyLoad("leavemsg")
     },
     {
-        path: '/edit',
-        element: lazyLoad("edit")
+        path: '/editor',
+        element: lazyLoad("editor")
     },
 ]
 export default routes

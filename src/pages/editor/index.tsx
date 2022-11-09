@@ -42,6 +42,13 @@ function MyEditor() {
                 <Input placeholder={'标题'} className={'mb-3'}/>
                 <Input placeholder={'描述'} className={'mb-3'}/>
                 <DatePicker placeholder={'时间'} className={'mb-3'}/>
+                封面
+                文章标签
+                分类专栏
+                文章类型
+                发布形式
+                保存为草稿
+                发布
             </div>
             <button onClick={()=>{
                 console.log(editor?.getHtml())}}>da</button>
