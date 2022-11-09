@@ -1,5 +1,5 @@
 import {useLocation, useParams} from "react-router-dom";
-import {Button, Card, Divider, Tag} from "antd";
+import {Button, Card, Divider, message, Tag} from "antd";
 import {CaretLeftOutlined, CaretRightOutlined, TagOutlined} from "@ant-design/icons";
 import Waline from "../../components/waline";
 import React, {useEffect} from "react";
@@ -8,6 +8,8 @@ import 'prismjs/themes/prism-okaidia.css'
 import 'prismjs/components/prism-jsx.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import './index.css'
+import copy from "copy-to-clipboard";
 
 function Index() {
     const params = useParams()
@@ -48,10 +50,25 @@ function Index() {
     //为pre标签添加 line-numbers
     useEffect(() => {
         const dgHtmlDOM = document.querySelectorAll('pre')
-        for(let i of dgHtmlDOM){
+        for (let i of dgHtmlDOM) {
             i.classList.add('line-numbers')
+            i.classList.add('pre-code')
+
+            //添加复制功能
+            let copyEle = document.createElement('div');
+            copyEle.innerHTML = '复制';
+            copyEle.className = 'copy-box';
+            i.appendChild(copyEle);
+            copyEle.onclick= function (){
+                let element = i.children[0]
+                if (element instanceof HTMLElement) {
+                    copy(element?.innerText);
+                    message.success("复制成功")
+                }
+            }
         }
     }, [html])
+
     return (
         <>
             <div className={'w-full flex flex-col justify-center items-center mb-12'}>
