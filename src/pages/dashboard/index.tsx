@@ -19,6 +19,7 @@ const Index = () => {
             <div className={'w-full flex flex-col justify-center items-center'}>
                 <NavLink
                     to={'article/12'}
+                    style={{maxWidth: 880}}
                 >
                     <Card className={'w-full p-2 rounded-xl shadow-md mb-6 cursor-pointer hover:shadow-lg duration-300'}>
                         <div>
