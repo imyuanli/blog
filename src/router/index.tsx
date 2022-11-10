@@ -34,10 +34,6 @@ const routes: RouteObject[] = [
         element: lazyLoad("editor")
     },
     {
-        path: '/archives',
-        element: lazyLoad("archives")
-    },
-    {
         path: '/links',
         element: lazyLoad("links")
     },

@@ -47,11 +47,6 @@ function App() {
             icon: <HomeOutlined/>,
         },
         {
-            path: '/archives',
-            name: '归档',
-            icon: <FileTextOutlined/>,
-        },
-        {
             path: '/categories',
             name: '分类',
             icon: <FolderOutlined/>,
@@ -62,9 +57,9 @@ function App() {
             icon: <TagsOutlined/>,
         },
         {
-            path: '/about',
-            name: '关于',
-            icon: <ExclamationCircleOutlined/>,
+            path: '/message',
+            name: '留言',
+            icon: <MessageOutlined/>,
         },
         {
             path: '/links',
@@ -72,9 +67,9 @@ function App() {
             icon: <LinkOutlined/>
         },
         {
-            path: '/message',
-            name: '留言',
-            icon: <MessageOutlined/>,
+            path: '/about',
+            name: '关于',
+            icon: <ExclamationCircleOutlined/>,
         },
     ]
 
