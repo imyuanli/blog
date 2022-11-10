@@ -1,15 +1,3 @@
-.username::before {
-    content: "";
-    position: absolute;
-    height: 12px;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    background-color: #4169E1;
-    opacity: 0.3;
-    transition: 0.1s ease background-color;
-}
-
 .over-line{
     overflow: hidden;
     text-overflow: ellipsis;

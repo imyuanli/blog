@@ -99,6 +99,10 @@ function App() {
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
                     <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
+                        <div className={'w-full flex flex-col justify-center items-center mb-9'}>
+                            <span className={'text-4xl mb-3 relative username'}>YuanLi</span>
+                            <span className={'text-lg'}>Hi, nice to meet you!</span>
+                        </div>
                         {views}
                     </div>
                 </div>
