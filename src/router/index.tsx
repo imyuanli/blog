@@ -7,7 +7,7 @@ const lazyLoad = (path: string) => {
     return (
         <Suspense fallback={
             <div className={'flex justify-center '}>
-                加载中<LoadingOutlined />
+                加载中{" "}<LoadingOutlined />
             </div>
         }
         >
@@ -33,5 +33,9 @@ const routes: RouteObject[] = [
         path: '/editor',
         element: lazyLoad("editor")
     },
+    {
+        path: '/archives',
+        element: lazyLoad("archives")
+    }
 ]
 export default routes
