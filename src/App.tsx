@@ -60,7 +60,7 @@ function App() {
             <div className={`App ${prefix}`}>
                 <div className={'header'}>
                     <div>
-                        Miracle
+                        YuanLi
                     </div>
                     <div className={'flex justify-center items-center'}>
                         <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>

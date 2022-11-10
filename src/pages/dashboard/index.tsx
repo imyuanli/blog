@@ -13,7 +13,7 @@ const Index = () => {
     return (
         <>
             <div className={'w-full flex flex-col justify-center items-center mb-12'}>
-                <span className={'text-4xl mb-3 relative username'}>Miracle</span>
+                <span className={'text-4xl mb-3 relative username'}>YuanLi</span>
                 <span className={'text-lg'}>Hi, nice to meet you!</span>
             </div>
             <div className={'w-full flex flex-col justify-center items-center'}>
