@@ -12,9 +12,11 @@ import {
     HomeOutlined, LinkOutlined, MessageOutlined, RocketOutlined,
     SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {BackTop, Button, ConfigProvider, Layout, Tooltip} from "antd";
+import {Avatar, BackTop, Button, ConfigProvider, Layout, Tooltip} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
+import imgUrl from './assets/349a701c8d7b4f8596b8469f56558792_qq_44259670.jpg'
+import ProFile from "./components/profile";
 
 function App() {
     //router
@@ -131,10 +133,7 @@ function App() {
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
                     <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
-                        <div className={'w-full flex flex-col justify-center items-center mb-9'}>
-                            <span className={'text-4xl mb-3 relative username'}>{userName}</span>
-                            <span className={'text-lg'}>Hi, nice to meet you!</span>
-                        </div>
+                        <ProFile userName={userName}/>
                         {views}
                     </div>
                 </div>
