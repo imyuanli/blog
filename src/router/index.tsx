@@ -26,8 +26,8 @@ const routes: RouteObject[] = [
         element: lazyLoad("article")
     },
     {
-        path: '/leavemsg',
-        element: lazyLoad("leavemsg")
+        path: '/message',
+        element: lazyLoad("message")
     },
     {
         path: '/editor',
@@ -36,6 +36,26 @@ const routes: RouteObject[] = [
     {
         path: '/archives',
         element: lazyLoad("archives")
-    }
+    },
+    {
+        path: '/links',
+        element: lazyLoad("links")
+    },
+    {
+        path: '/tags',
+        element: lazyLoad("tags")
+    },
+    {
+        path: '/about',
+        element: lazyLoad("about")
+    },
+    {
+        path: '/about',
+        element: lazyLoad("about")
+    },
+    {
+        path: '/categories',
+        element: lazyLoad("categories")
+    },
 ]
 export default routes

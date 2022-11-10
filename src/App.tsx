@@ -7,12 +7,12 @@ import './index.css';
 import routes from "./router";
 import {NavLink, useRoutes} from "react-router-dom";
 import {
-    createFromIconfontCN,
-    FileOutlined,
-    HomeOutlined, RocketOutlined,
-    SearchOutlined
+    createFromIconfontCN, ExclamationCircleOutlined,
+    FileOutlined, FileTextOutlined, FolderOutlined,
+    HomeOutlined, LinkOutlined, MessageOutlined, RocketOutlined,
+    SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {BackTop, Button, ConfigProvider, Layout} from "antd";
+import {BackTop, Button, ConfigProvider, Layout, Tooltip} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 
@@ -36,7 +36,7 @@ function App() {
         }
     };
 
-    //active路由
+    //路由
     const routerArr = [
         {
             path: '/',
@@ -44,9 +44,34 @@ function App() {
             icon: <HomeOutlined/>,
         },
         {
-            path: '/article',
+            path: '/archives',
             name: '归档',
-            icon: <FileOutlined/>,
+            icon: <FileTextOutlined/>,
+        },
+        {
+            path: '/categories',
+            name: '分类',
+            icon: <FolderOutlined/>,
+        },
+        {
+            path: '/tags',
+            name: '标签',
+            icon: <TagsOutlined/>,
+        },
+        {
+            path: '/about',
+            name: '关于',
+            icon: <ExclamationCircleOutlined/>,
+        },
+        {
+            path: '/links',
+            name: '友链',
+            icon: <LinkOutlined/>
+        },
+        {
+            path: '/message',
+            name: '留言',
+            icon: <MessageOutlined/>,
         },
     ]
     let activeClassName = "bg-black";
@@ -54,16 +79,16 @@ function App() {
         return isActive ? activeClassName : ""
     }
 
-
+    const userName = 'YuanLi'
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
                 <div className={'header'}>
-                    <div>
-                        YuanLi
-                    </div>
+                    <div>{userName}</div>
                     <div className={'flex justify-center items-center'}>
-                        <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>
+                        <Tooltip placement="bottom" title={'搜索'}>
+                            <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>
+                        </Tooltip>
                         <div className={'flex justify-center items-center'}>
                             {
                                 routerArr.map((item, index) => {
@@ -73,7 +98,10 @@ function App() {
                                             className={'text-base mr-3'}
                                             key={index}
                                         >
-                                            <Button className={'rounded-lg bg-green-500 text-white'} icon={item?.icon}/>
+                                            <Tooltip placement="bottom" title={item?.name}>
+                                                <Button className={'rounded-lg bg-green-500 text-white'}
+                                                        icon={item?.icon}/>
+                                            </Tooltip>
                                         </NavLink>
                                     )
                                 })
@@ -81,32 +109,36 @@ function App() {
                         </div>
                         {
                             prefix == 'custom-dark' ?
-                                <Button className={'rounded-lg bg-green-500 text-white'}
-                                        icon={<IconFont type={'icon-sun'} style={{fontSize: 20}}/>}
-                                        onClick={() => {
-                                            handlePrefixChange(1)
-                                        }}
-                                />
+                                <Tooltip placement="bottom" title={'切换到光'}>
+                                    <Button className={'rounded-lg bg-green-500 text-white'}
+                                            icon={<IconFont type={'icon-sun'} style={{fontSize: 20}}/>}
+                                            onClick={() => {
+                                                handlePrefixChange(1)
+                                            }}
+                                    />
+                                </Tooltip>
                                 :
-                                <Button className={'rounded-lg bg-green-500 text-white'}
-                                        icon={<IconFont type={'icon-night'} style={{fontSize: 16}}/>}
-                                        onClick={() => {
-                                            handlePrefixChange(0)
-                                        }}
-                                />
+                                <Tooltip placement="bottom" title={'切换到暗黑'}>
+                                    <Button className={'rounded-lg bg-green-500 text-white'}
+                                            icon={<IconFont type={'icon-night'} style={{fontSize: 16}}/>}
+                                            onClick={() => {
+                                                handlePrefixChange(0)
+                                            }}
+                                    />
+                                </Tooltip>
                         }
                     </div>
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
                     <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
                         <div className={'w-full flex flex-col justify-center items-center mb-9'}>
-                            <span className={'text-4xl mb-3 relative username'}>YuanLi</span>
+                            <span className={'text-4xl mb-3 relative username'}>{userName}</span>
                             <span className={'text-lg'}>Hi, nice to meet you!</span>
                         </div>
                         {views}
                     </div>
                 </div>
-                <BackTop style={{right:'30px'}}>
+                <BackTop style={{right: '30px'}}>
                     <RocketOutlined className={'text-4xl'}/>
                 </BackTop>
             </div>
