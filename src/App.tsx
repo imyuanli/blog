@@ -77,22 +77,19 @@ function App() {
             icon: <MessageOutlined/>,
         },
     ]
-    let activeClassName = "bg-black";
-    const computeClassName = ({isActive}: { isActive: any }) => {
-        return isActive ? activeClassName : ""
-    }
 
-    //屏幕宽度
-    const userName = 'YuanLi'
+    //移动端
     const [open, setOpen] = useState(false);
-
     const toggleCollapsed = () => {
         setOpen(!open);
     };
+
+    const userName = 'YuanLi'
+
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
-                <div className={'header px-3 sm:px-6'}>
+                <div className={'header px-3 sm:px-8'}>
                     <div>{userName}</div>
                     <div className={'flex justify-center items-center'}>
                         <Tooltip placement="bottom" title={'搜索'}>

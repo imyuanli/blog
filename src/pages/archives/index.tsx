@@ -6,6 +6,7 @@ import {Card, Timeline} from "antd";
 const Archives = () => {
     return (
         <Card>
+            <div className={'text-3xl mb-3 flex justify-center'}>归档</div>
             <Timeline>
                 <Timeline.Item color="#10b981" dot={<ClockCircleOutlined style={{ fontSize: '22px' }} />}>
                     <span style={{ fontSize: '22px' }}>2022</span>

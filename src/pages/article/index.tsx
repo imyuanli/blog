@@ -74,7 +74,7 @@ function Index() {
 
             <Card className={'rounded-xl w-full'}>
                 <div className={'w-full flex flex-col justify-center items-center mb-6'}>
-                    <div className={'text-3xl font-semibold  mb-3 relative'}>Card 组件</div>
+                    <div className={'text-3xl font-semibold mb-3'}>Card 组件</div>
                     <div className={'text-base mb-3'}>
                         <span>2022年05月14日</span>
                     </div>
