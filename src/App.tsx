@@ -7,16 +7,17 @@ import './index.css';
 import routes from "./router";
 import {NavLink, useRoutes} from "react-router-dom";
 import {
-    createFromIconfontCN, ExclamationCircleOutlined,
-    FileOutlined, FileTextOutlined, FolderOutlined,
-    HomeOutlined, LinkOutlined, MessageOutlined, RocketOutlined,
+    ExclamationCircleOutlined,
+    FileTextOutlined, FolderOutlined,
+    HomeOutlined, LinkOutlined, MenuFoldOutlined, MenuOutlined, MenuUnfoldOutlined, MessageOutlined, RocketOutlined,
     SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {Avatar, BackTop, Button, ConfigProvider, Layout, Tooltip} from "antd";
+import {BackTop, Button, ConfigProvider, Drawer, List, Typography, Tooltip} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
-import imgUrl from './assets/349a701c8d7b4f8596b8469f56558792_qq_44259670.jpg'
 import ProFile from "./components/profile";
+import {useEffect, useState} from "react";
+
 
 function App() {
     //router
@@ -81,33 +82,42 @@ function App() {
         return isActive ? activeClassName : ""
     }
 
+    //屏幕宽度
     const userName = 'YuanLi'
+    const [open, setOpen] = useState(false);
+
+    const toggleCollapsed = () => {
+        setOpen(!open);
+    };
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
-                <div className={'header'}>
+                <div className={'header px-3 sm:px-6'}>
                     <div>{userName}</div>
                     <div className={'flex justify-center items-center'}>
                         <Tooltip placement="bottom" title={'搜索'}>
                             <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>
                         </Tooltip>
-                        <div className={'flex justify-center items-center'}>
-                            {
-                                routerArr.map((item, index) => {
-                                    return (
-                                        <NavLink
-                                            to={item?.path}
-                                            className={'text-base mr-3'}
-                                            key={index}
-                                        >
-                                            <Tooltip placement="bottom" title={item?.name}>
-                                                <Button className={'rounded-lg bg-green-500 text-white'}
-                                                        icon={item?.icon}/>
-                                            </Tooltip>
-                                        </NavLink>
-                                    )
-                                })
-                            }
+                        <div className={'flex justify-center items-center hidden sm:block'}>
+                            <div className={'flex justify-center items-center'}>
+                                {
+                                    routerArr.map((item, index) => {
+                                        return (
+                                            <NavLink
+                                                to={item?.path}
+                                                className={'text-base mr-3'}
+                                                key={index}
+                                            >
+                                                <Tooltip placement="bottom" title={item?.name}>
+                                                    <Button className={'rounded-lg bg-green-500 text-white'}
+                                                            icon={item?.icon}
+                                                    />
+                                                </Tooltip>
+                                            </NavLink>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                         {
                             prefix == 'custom-dark' ?
@@ -129,6 +139,13 @@ function App() {
                                     />
                                 </Tooltip>
                         }
+                        <Button
+                            className={'rounded-lg bg-green-500 text-white ml-3 block sm:hidden'}
+                            onClick={toggleCollapsed}
+                            icon={
+                                <MenuOutlined/>
+                            }
+                        />
                     </div>
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
@@ -141,6 +158,29 @@ function App() {
                     <RocketOutlined className={'text-4xl'}/>
                 </BackTop>
             </div>
+            <Drawer
+                open={open}
+                closable={false}
+                width={'35%'}
+                onClose={toggleCollapsed}
+            >
+                <List
+                    dataSource={routerArr}
+                    renderItem={item => (
+                        <List.Item onClick={toggleCollapsed}>
+                            <NavLink
+                                to={item?.path}
+                                className={'text-base mr-3'}
+                            >
+                                <div className={'text-green-500'}>
+                                    <span className={'mr-3'}>{item?.icon}</span>
+                                    <span>{item?.name}</span>
+                                </div>
+                            </NavLink>
+                        </List.Item>
+                    )}
+                />
+            </Drawer>
         </ConfigProvider>
     )
 }
