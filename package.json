@@ -12,8 +12,6 @@
     "@ant-design/icons": "^4.7.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.10.9",
-    "@mui/material": "^5.10.12",
     "@wangeditor/editor": "^5.1.22",
     "@wangeditor/editor-for-react": "^1.0.6",
     "ahooks": "^3.7.2",
@@ -25,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "react-router-dom": "^6.4.2",
+    "store": "^2.0.12",
     "vite-plugin-prismjs": "^0.0.8"
   },
   "devDependencies": {
