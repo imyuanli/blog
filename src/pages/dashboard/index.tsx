@@ -8,10 +8,12 @@ import {
 import {Card, Tag} from "antd";
 import {NavLink} from "react-router-dom";
 import imgUrl from '../../assets/349a701c8d7b4f8596b8469f56558792_qq_44259670.jpg'
+import ProFile from "../../components/profile";
 
 const Index = () => {
     return (
         <div className={'w-full flex flex-col justify-center items-center'}>
+            <ProFile userName={"YuanLi"}/>
             <NavLink
                 to={'article/12'}
                 className={'contents'}

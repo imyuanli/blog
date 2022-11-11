@@ -12,13 +12,13 @@ import {
     HomeOutlined, LinkOutlined, MenuFoldOutlined, MenuOutlined, MenuUnfoldOutlined, MessageOutlined, RocketOutlined,
     SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {BackTop, Button, ConfigProvider, Drawer, List, Typography, Tooltip} from "antd";
+import {BackTop, Button, ConfigProvider, Drawer, List, Input, Tooltip} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 import ProFile from "./components/profile";
 import {useEffect, useState} from "react";
 
-
+const { Search } = Input;
 function App() {
     //router
     const views = useRoutes(routes)
@@ -46,31 +46,31 @@ function App() {
             name: '首页',
             icon: <HomeOutlined/>,
         },
-        {
-            path: '/categories',
-            name: '分类',
-            icon: <FolderOutlined/>,
-        },
-        {
-            path: '/tags',
-            name: '标签',
-            icon: <TagsOutlined/>,
-        },
+        // {
+        //     path: '/categories',
+        //     name: '分类',
+        //     icon: <FolderOutlined/>,
+        // },
+        // {
+        //     path: '/tags',
+        //     name: '标签',
+        //     icon: <TagsOutlined/>,
+        // },
         {
             path: '/message',
             name: '留言',
             icon: <MessageOutlined/>,
         },
-        {
-            path: '/links',
-            name: '友链',
-            icon: <LinkOutlined/>
-        },
-        {
-            path: '/about',
-            name: '关于',
-            icon: <ExclamationCircleOutlined/>,
-        },
+        // {
+        //     path: '/links',
+        //     name: '友链',
+        //     icon: <LinkOutlined/>
+        // },
+        // {
+        //     path: '/about',
+        //     name: '关于',
+        //     icon: <ExclamationCircleOutlined/>,
+        // },
     ]
 
     //移动端
@@ -81,15 +81,26 @@ function App() {
 
     const userName = 'YuanLi'
 
+    //搜索
+    const onSearch=(value:string)=>{
+        console.log(value)
+    }
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
                 <div className={'header px-3 sm:px-8'}>
                     <div>{userName}</div>
                     <div className={'flex justify-center items-center'}>
-                        <Tooltip placement="bottom" title={'搜索'}>
-                            <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>
-                        </Tooltip>
+                        {/*<div className={'flex justify-center items-center mr-3'}>*/}
+                        {/*    <Input*/}
+                        {/*        placeholder="搜索一下吧"*/}
+                        {/*        allowClear*/}
+                        {/*        // onSearch={onSearch}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        {/*<Tooltip placement="bottom" title={'搜索'}>*/}
+                        {/*    <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>*/}
+                        {/*</Tooltip>*/}
                         <div className={'flex justify-center items-center hidden sm:block'}>
                             <div className={'flex justify-center items-center'}>
                                 {
@@ -142,7 +153,6 @@ function App() {
                 </div>
                 <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
                     <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
-                        <ProFile userName={userName}/>
                         {views}
                     </div>
                 </div>

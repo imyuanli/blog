@@ -10,6 +10,7 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import './index.css'
 import copy from "copy-to-clipboard";
+import Title from "../../components/title";
 
 function Index() {
     const params = useParams()
@@ -71,7 +72,7 @@ function Index() {
 
     return (
         <>
-
+            {/*<Title title={'Card 组件'} />*/}
             <Card className={'rounded-xl w-full'}>
                 <div className={'w-full flex flex-col justify-center items-center mb-6'}>
                     <div className={'text-3xl font-semibold mb-3'}>Card 组件</div>
@@ -83,7 +84,7 @@ function Index() {
                         <Tag icon={<TagOutlined/>}>vue</Tag>
                     </div>
                 </div>
-                {/*<div className={''}>描述描述描述描述描述描述</div>*/}
+                <div className={''}>描述描述描述描述描述描述</div>
                 <Divider/>
                 <div className={'break-words'} dangerouslySetInnerHTML={{__html: html}}/>
                 <Divider/>

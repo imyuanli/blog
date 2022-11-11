@@ -6,8 +6,8 @@ const lazyLoad = (path: string) => {
     const Comp = lazy(() => import(/* @vite-ignore */`../pages/${path}/index.tsx`))
     return (
         <Suspense fallback={
-            <div className={'flex justify-center '}>
-                加载中{" "}<LoadingOutlined />
+            <div className={'flex justify-center'}>
+                加载中{" "}<LoadingOutlined/>
             </div>
         }
         >
@@ -46,12 +46,22 @@ const routes: RouteObject[] = [
         element: lazyLoad("about")
     },
     {
-        path: '/about',
-        element: lazyLoad("about")
+        path: '/login',
+        element: lazyLoad("login")
     },
     {
         path: '/categories',
         element: lazyLoad("categories")
     },
+    // {
+    //     path: '/backstage',
+    //     element: lazyLoad("backstage/index.tsx"),
+    //     children: [
+    //         {
+    //             path: 'user',
+    //             element: lazyLoad('backstage/user.tsx')
+    //         },
+    //     ]
+    // },
 ]
 export default routes
