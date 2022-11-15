@@ -5,7 +5,7 @@ import "./theme/custom-default.css";
 import "./theme/custom-dark.css";
 import './index.css';
 import routes from "./router";
-import {NavLink, useRoutes} from "react-router-dom";
+import {NavLink, useNavigate, useRoutes} from "react-router-dom";
 import {
     ExclamationCircleOutlined,
     FileTextOutlined, FolderOutlined,
@@ -18,7 +18,8 @@ import {IconFont} from './utils/util'
 import ProFile from "./components/profile";
 import {useEffect, useState} from "react";
 
-const { Search } = Input;
+const {Search} = Input;
+
 function App() {
     //router
     const views = useRoutes(routes)
@@ -82,14 +83,17 @@ function App() {
     const userName = 'YuanLi'
 
     //搜索
-    const onSearch=(value:string)=>{
+    const onSearch = (value: string) => {
         console.log(value)
     }
+    const navigate = useNavigate()
     return (
-        <ConfigProvider prefixCls={prefix}>
+         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
                 <div className={'header px-3 sm:px-8'}>
-                    <div>{userName}</div>
+                    <div onDoubleClick={() => {
+                        navigate('/editor')
+                    }}>{userName}</div>
                     <div className={'flex justify-center items-center'}>
                         {/*<div className={'flex justify-center items-center mr-3'}>*/}
                         {/*    <Input*/}
