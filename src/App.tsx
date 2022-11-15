@@ -12,7 +12,7 @@ import {
     HomeOutlined, LinkOutlined, MenuFoldOutlined, MenuOutlined, MenuUnfoldOutlined, MessageOutlined, RocketOutlined,
     SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {BackTop, Button, ConfigProvider, Drawer, List, Input, Tooltip} from "antd";
+import {BackTop, Button, ConfigProvider, Drawer, List, Input, Tooltip, Select, Popover} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 import ProFile from "./components/profile";
@@ -88,23 +88,17 @@ function App() {
     }
     const navigate = useNavigate()
     return (
-         <ConfigProvider prefixCls={prefix}>
+        <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
                 <div className={'header px-3 sm:px-8'}>
-                    <div onDoubleClick={() => {
-                        navigate('/editor')
-                    }}>{userName}</div>
+                    <div
+                        onDoubleClick={() => {
+                            navigate('/editor')
+                        }}
+                    >
+                        {userName}
+                    </div>
                     <div className={'flex justify-center items-center'}>
-                        {/*<div className={'flex justify-center items-center mr-3'}>*/}
-                        {/*    <Input*/}
-                        {/*        placeholder="搜索一下吧"*/}
-                        {/*        allowClear*/}
-                        {/*        // onSearch={onSearch}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
-                        {/*<Tooltip placement="bottom" title={'搜索'}>*/}
-                        {/*    <Button className={'mr-3 rounded-lg bg-green-500 text-white'} icon={<SearchOutlined/>}/>*/}
-                        {/*</Tooltip>*/}
                         <div className={'flex justify-center items-center hidden sm:block'}>
                             <div className={'flex justify-center items-center'}>
                                 {
@@ -126,6 +120,22 @@ function App() {
                                 }
                             </div>
                         </div>
+                        <Popover
+                            content={
+                                <div className={'flex flex-col'}>
+                                    <NavLink
+                                        to={'/'}
+                                        className={'text-base mr-3'}
+                                    >
+                                        分享
+                                    </NavLink>
+                                </div>
+                            }
+                            trigger="click"
+                        >
+                            <Button className={'rounded-lg mr-3 bg-green-500 text-white'} icon={<FolderOutlined/>}/>
+                        </Popover>
+                        <Button className={'rounded-lg mr-3 bg-green-500 text-white'} icon={<SearchOutlined/>}/>
                         {
                             prefix == 'custom-dark' ?
                                 <Tooltip placement="bottom" title={'切换到光'}>
