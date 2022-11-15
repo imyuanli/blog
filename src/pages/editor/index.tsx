@@ -12,19 +12,12 @@ import {
     Upload
 } from "antd";
 import {LoadingOutlined, PlusCircleOutlined, PlusOutlined} from "@ant-design/icons";
+import {useSetState} from "ahooks";
 
 function MyEditor() {
     // editor 实例
     const [editor, setEditor] = useState<IDomEditor | null>(null)   // TS 语法
     // 编辑器内容
-    const [html, setHtml] = useState('<p>hello</p>')
-
-    // 模拟 ajax 请求，异步设置 html
-    useEffect(() => {
-        setTimeout(() => {
-            setHtml('<p>hello world</p>')
-        }, 500)
-    }, [])
 
     // 工具栏配置
     const toolbarConfig: Partial<IToolbarConfig> = {}  // TS 语法
@@ -33,7 +26,6 @@ function MyEditor() {
     const editorConfig: Partial<IEditorConfig> = {    // TS 语法
         placeholder: '请输入内容...',
     }
-
 
     // 及时销毁 editor ，重要！
     useEffect(() => {
@@ -44,8 +36,19 @@ function MyEditor() {
         }
     }, [editor])
 
-    //文章类型
-    const [type, setType] = useState('1')
+    //最终数据的保存
+    const [state, setState] = useSetState(
+        {
+            title: "",
+            describe: "",
+            content: "",
+            cover: "",
+            type: "",
+            keywords: "",
+            custom_time: "",
+            categorizeId: ''
+        }
+    )
 
     //上传图片
     const [imageUrl, setImgUrl] = useState(null)
@@ -78,29 +81,56 @@ function MyEditor() {
         console.log(categorize_desc)
     }
 
-    //添加关键词
-    const [tags, setTags] = useState<any>([])
-    const handleChange = (value: string) => {
-        setTags(value)
-    };
+    // // 模拟 ajax 请求，异步设置 html
+    // useEffect(() => {
+    //     // setTimeout(() => {
+    //     //     setHtml('<p>hello world</p>')
+    //     // }, 500)
+    // }, [])
+
+    const handleSave = () => {
+        console.log(state)
+    }
     return (
         <>
             <div className={'mb-3'}>
                 <div className={'flex justify-between mb-3'}>
                     <div className={'flex-1 mr-3'}>
-                        <Input placeholder={'标题'} className={'mb-3'}/>
-                        <Input placeholder={'描述'} className={'mb-3'}/>
+                        <Input
+                            placeholder={'标题'}
+                            className={'mb-3'}
+                            onChange={(e) => {
+                                setState({title: e.target.value})
+                            }}
+                        />
+                        <Input
+                            placeholder={'描述'}
+                            className={'mb-3'}
+                            onChange={(e) => {
+                                setState({describe: e.target.value})
+                            }}
+                        />
                         <Select
                             mode="tags"
                             style={{width: '50%'}}
                             placeholder="添加关键词"
-                            onChange={handleChange}
+                            onChange={(value) => {
+                                setState({keywords: value})
+                            }}
                             className={'mb-3 mr-3'}
                         />
-                        <DatePicker placeholder={'时间'} className={'mb-3 mr-3'}/>
+                        <DatePicker
+                            placeholder={'时间'}
+                            className={'mb-3 mr-3'}
+                            onChange={(date, dateString) => {
+                                setState({custom_time: dateString})
+                            }}
+                        />
                         <Select
-                            defaultValue={type}
-                            // onChange={handleChange}
+                            placeholder="选择文章类型"
+                            onChange={(value) => {
+                                setState({type: value})
+                            }}
                             options={[
                                 {
                                     value: '1',
@@ -117,45 +147,6 @@ function MyEditor() {
                             ]}
                             className={'mb-3 mr-3'}
                         />
-                        <div>
-                            <Select
-                                // defaultValue={type}
-                                placeholder="选择分类"
-                                options={[
-                                    {
-                                        value: '2',
-                                        label: '随笔与杂谈',
-                                    },
-                                    {
-                                        value: '3',
-                                        label: '翻译',
-                                    },
-                                ]}
-                                className={'mb-3'}
-                            />
-                            <Button size={'small'} shape="circle" type={'primary'} icon={<PlusCircleOutlined/>}
-                                    onClick={toggleVisible}/>
-                        </div>
-                        <Modal
-                            title={'添加分类'}
-                            open={isModalOpen}
-                            onCancel={toggleVisible}
-                            onOk={handleOk}
-                        >
-                            <Input
-                                placeholder={'输入分类名称'}
-                                className={'mb-3'}
-                                onChange={(e) => {
-                                    handleEditInputName(e)
-                                }}
-                            />
-                            <Input
-                                placeholder={'输入分类描述'}
-                                onChange={(e) => {
-                                    handleEditInputDesc(e)
-                                }}
-                            />
-                        </Modal>
                     </div>
                     <div>
                         <Upload
@@ -171,10 +162,57 @@ function MyEditor() {
                         </Upload>
                     </div>
                 </div>
-                <div>
-                    <Button className={'mr-3'}>存草稿</Button>
-                    <Button>发布</Button>
+                <div className={'flex justify-between'}>
+                    <div>
+                        <Select
+                            onChange={(value) => {
+                                setState({categorizeId: value})
+                            }}
+                            placeholder="选择分类"
+                            options={[
+                                {
+                                    value: '2',
+                                    label: '随笔与杂谈',
+                                },
+                                {
+                                    value: '3',
+                                    label: '翻译',
+                                },
+                            ]}
+                            className={'mb-3'}
+                        />
+                        <Button size={'small'}
+                                shape="circle"
+                                type={'primary'}
+                                icon={<PlusCircleOutlined/>}
+                                onClick={toggleVisible}
+                        />
+                    </div>
+                    <div>
+                        <Button type={"primary"} className={'mr-3'}>存草稿</Button>
+                        <Button type={"primary"} onClick={handleSave}>发布</Button>
+                    </div>
                 </div>
+                <Modal
+                    title={'添加分类'}
+                    open={isModalOpen}
+                    onCancel={toggleVisible}
+                    onOk={handleOk}
+                >
+                    <Input
+                        placeholder={'输入分类名称'}
+                        className={'mb-3'}
+                        onChange={(e) => {
+                            handleEditInputName(e)
+                        }}
+                    />
+                    <Input
+                        placeholder={'输入分类描述'}
+                        onChange={(e) => {
+                            handleEditInputDesc(e)
+                        }}
+                    />
+                </Modal>
             </div>
             {/*<button onClick={() => {*/}
             {/*    console.log(editor?.getHtml())*/}
@@ -189,9 +227,9 @@ function MyEditor() {
                 />
                 <Editor
                     defaultConfig={editorConfig}
-                    value={html}
+                    value={state?.content}
                     onCreated={setEditor}
-                    onChange={(editor: any) => setHtml(editor.getHtml())}
+                    onChange={(editor: any) => setState({content: editor.getHtml()})}
                     mode="simple"
                     style={{overflowY: 'hidden', height: '500px'}}
                 />
