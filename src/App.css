@@ -8,8 +8,8 @@
 
 .App::before {
     content: "";
-    filter: blur(6px);
-    background: url('https://i.loli.net/2019/05/07/5cd0fc2774178.jpg') center/cover no-repeat;
+    filter: blur(5px);
+    background: url('https://api.paugram.com/wallpaper/') center/cover no-repeat;
     width: 100%;
     top: 0;
     left: 0;
