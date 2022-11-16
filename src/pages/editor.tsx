@@ -92,7 +92,7 @@ function MyEditor() {
         console.log(state)
     }
     return (
-        <Card>
+        <div>
             <div className={'mb-3'}>
                 <div className={'flex justify-between mb-3'}>
                     <div className={'flex-1 mr-3'}>
@@ -231,7 +231,7 @@ function MyEditor() {
                 />
             </div>
             {/*<div dangerouslySetInnerHTML={{__html: html}}/>*/}
-        </Card>
+        </div>
     )
 }
 

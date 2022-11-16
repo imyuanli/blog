@@ -55,11 +55,23 @@ const routes: RouteObject[] = [
     },
     {
         path: '/backstage',
-        element: lazyLoad("backstage/index"),
+        element: lazyLoad("backstage"),
         children: [
             {
+                path: 'editor',
+                element: lazyLoad('editor')
+            },
+            {
+                path: 'articlelist',
+                element: lazyLoad('articlelist')
+            },
+            {
+                path: 'categorylist',
+                element: lazyLoad('categorylist')
+            },
+            {
                 path: 'user',
-                element: lazyLoad('backstage/user')
+                element: lazyLoad('user')
             },
         ]
     },
