@@ -88,7 +88,7 @@ function App() {
                     <div className={'header px-3 sm:px-8'}>
                         <div
                             onDoubleClick={() => {
-                                navigate('/editor')
+                                navigate('/backstage/editor')
                             }}
                             onClick={() => {
                                 navigate('/')
