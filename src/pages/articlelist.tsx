@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
 import {Button, Space, Table, Tabs, Tag} from "antd";
+import {ColumnsType} from "antd/es/table";
 
 interface DataType {
     key: string;
-    name: string;
-    age: number;
-    address: string;
+    title: string;
+    type: string,
+    categorizeId: string;
     tags: string[];
+    updatedAt: string,
 }
 
 
 const Articlelist = () => {
-    const [activeKey, setActiveKey] = useState(1)
+    const [activeKey, setActiveKey] = useState('1')
     const onChange = (value: string) => {
         setActiveKey(value)
     };
-
     const columns: ColumnsType<DataType> = [
         {
             title: '标题',
@@ -66,8 +67,8 @@ const Articlelist = () => {
                         编辑
                     </Button>
                     {
-                        activeKey == 1 ?
-                            <Button type={'danger'}>
+                        activeKey == '1' ?
+                            <Button danger>
                                 下架
                             </Button>
                             :
@@ -83,11 +84,11 @@ const Articlelist = () => {
     const publishData: DataType[] = [
         {
             key: '0',
-            title: '最近更新时间',
+            title: '随笔随笔',
             categorizeId: '随笔',
             tags: ['nice', 'developer'],
             type: "原创",
-            updatedAt:'2019',
+            updatedAt: '2019',
         }
     ];
     const unPublishData: DataType[] = [
@@ -97,7 +98,7 @@ const Articlelist = () => {
             categorizeId: 'John Brown',
             tags: ['nice', 'developer'],
             type: "原创",
-            updatedAt:'2019',
+            updatedAt: '2019',
         }
     ];
     return (
@@ -120,7 +121,6 @@ const Articlelist = () => {
                     },
                 ]}
             />
-
         </div>
     )
 };
