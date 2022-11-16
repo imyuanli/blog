@@ -1,18 +1,18 @@
 import {useLocation, useParams} from "react-router-dom";
 import {Button, Card, Divider, message, Tag} from "antd";
 import {CaretLeftOutlined, CaretRightOutlined, TagOutlined} from "@ant-design/icons";
-import Waline from "../../components/waline";
+import Waline from "../components/waline";
 import React, {useEffect} from "react";
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-okaidia.css'
 import 'prismjs/components/prism-jsx.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-import './index.css'
+import './article.css'
 import copy from "copy-to-clipboard";
-import Title from "../../components/title";
+import Title from "../components/title";
 
-function Index() {
+function Article() {
     const params = useParams()
     const articleId = params?.id
     const serverURL = 'https://waline-27yxp2m9l-imyuanli.vercel.app/';
@@ -109,4 +109,4 @@ function Index() {
     )
 }
 
-export default Index
+export default Article

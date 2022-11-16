@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Card} from "antd";
-import Title from "../../components/title";
-import ArticleCard from "../../components/article-card";
+import Title from "../components/title";
+import ArticleCard from "../components/article-card";
 import {useParams} from "react-router-dom";
 
 const Categories = () => {

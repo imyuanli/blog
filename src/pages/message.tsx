@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react';
-import Waline from "../../components/waline";
+import Waline from "../components/waline";
 import {useHref, useLocation, useParams} from "react-router-dom";
 import {Card} from "antd";
-import Title from "../../components/title";
+import Title from "../components/title";
 
 const Message = () => {
     const serverURL = 'https://waline-27yxp2m9l-imyuanli.vercel.app/';

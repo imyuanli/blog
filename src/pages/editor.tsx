@@ -4,7 +4,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import {Editor, Toolbar} from '@wangeditor/editor-for-react'
 import {IDomEditor, IEditorConfig, IToolbarConfig} from '@wangeditor/editor'
 import {
-    Button,
+    Button, Card,
     DatePicker,
     Input,
     Modal,
@@ -92,7 +92,7 @@ function MyEditor() {
         console.log(state)
     }
     return (
-        <>
+        <Card>
             <div className={'mb-3'}>
                 <div className={'flex justify-between mb-3'}>
                     <div className={'flex-1 mr-3'}>
@@ -214,10 +214,6 @@ function MyEditor() {
                     />
                 </Modal>
             </div>
-            {/*<button onClick={() => {*/}
-            {/*    console.log(editor?.getHtml())*/}
-            {/*}}>da*/}
-            {/*</button>*/}
             <div style={{zIndex: 100}}>
                 <Toolbar
                     editor={editor}
@@ -235,7 +231,7 @@ function MyEditor() {
                 />
             </div>
             {/*<div dangerouslySetInnerHTML={{__html: html}}/>*/}
-        </>
+        </Card>
     )
 }
 

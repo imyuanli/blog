@@ -1,8 +1,8 @@
-import ProFile from "../../components/profile";
+import ProFile from "../components/profile";
 import {useTitle} from "ahooks";
-import ArticleCard from "../../components/article-card";
+import ArticleCard from "../components/article-card";
 
-const Index = () => {
+const Dashboard = () => {
     useTitle("YuanLi‘s Blog");
     return (
         <div className={'w-full flex flex-col justify-center items-center'}>
@@ -15,4 +15,4 @@ const Index = () => {
         </div>
     )
 }
-export default Index
+export default Dashboard

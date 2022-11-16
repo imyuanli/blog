@@ -3,7 +3,7 @@ import {RouteObject} from 'react-router-dom'
 import {LoadingOutlined} from "@ant-design/icons";
 // 路由懒加载
 const lazyLoad = (path: string) => {
-    const Comp = lazy(() => import(/* @vite-ignore */`../pages/${path}/index.tsx`))
+    const Comp = lazy(() => import(/* @vite-ignore */`../pages/${path}.tsx`))
     return (
         <Suspense fallback={
             <div className={'flex justify-center'}>
@@ -30,10 +30,6 @@ const routes: RouteObject[] = [
         element: lazyLoad("message")
     },
     {
-        path: '/editor',
-        element: lazyLoad("editor")
-    },
-    {
         path: '/links',
         element: lazyLoad("links")
     },
@@ -52,16 +48,20 @@ const routes: RouteObject[] = [
     {
         path: '*',
         element: lazyLoad("404")
-    }
-    // {
-    //     path: '/backstage',
-    //     element: lazyLoad("backstage/index.tsx"),
-    //     children: [
-    //         {
-    //             path: 'user',
-    //             element: lazyLoad('backstage/user.tsx')
-    //         },
-    //     ]
-    // },
+    },
+    {
+        path: '/editor',
+        element: lazyLoad("editor")
+    },
+    {
+        path: '/backstage',
+        element: lazyLoad("backstage/index"),
+        children: [
+            {
+                path: 'user',
+                element: lazyLoad('backstage/user')
+            },
+        ]
+    },
 ]
 export default routes
