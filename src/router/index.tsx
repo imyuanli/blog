@@ -38,10 +38,6 @@ const routes: RouteObject[] = [
         element: lazyLoad("links")
     },
     {
-        path: '/tags',
-        element: lazyLoad("tags")
-    },
-    {
         path: '/about',
         element: lazyLoad("about")
     },
@@ -50,9 +46,13 @@ const routes: RouteObject[] = [
         element: lazyLoad("login")
     },
     {
-        path: '/categories',
+        path: '/categories/:category',
         element: lazyLoad("categories")
     },
+    {
+        path: '*',
+        element: lazyLoad("404")
+    }
     // {
     //     path: '/backstage',
     //     element: lazyLoad("backstage/index.tsx"),

@@ -18,12 +18,13 @@ interface props {
 
 const ArticleCard: React.FunctionComponent<props> = () => {
     return (
-        <NavLink
-            to={'article/12'}
-            className={'contents'}
-            style={{color: '#37475b'}}
-        >
-            <Card className={'w-full p-2 rounded-xl shadow-md mb-6 hover:shadow-lg duration-300'}>
+
+        <Card className={'w-full p-2 rounded-xl shadow-md mb-6 hover:shadow-lg duration-300'}>
+            <NavLink
+                to={'article/12'}
+                className={'contents'}
+                style={{color: '#37475b'}}
+            >
                 <div className={'text-2xl font-semibold mb-6 truncate overflow-hidden'}>
                     Card 组件Card 组件Card
                     组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card
@@ -38,34 +39,34 @@ const ArticleCard: React.FunctionComponent<props> = () => {
                         描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
                     </p>
                 </div>
+            </NavLink>
+            <div className={'flex'}>
                 <div className={'flex'}>
-                    <div className={'flex'}>
-                        <div className={'mr-2'}>
-                            <FieldTimeOutlined className={'mr-1'}/>
-                            <span>2021-01-21</span>
-                        </div>
-                        {/*<NavLink*/}
-                        {/*    to={'/categories'}*/}
-                        {/*    className={'contents text-black'}*/}
-                        {/*>*/}
-                        {/*    */}
-                        {/*</NavLink>*/}
+                    <div className={'mr-2'}>
+                        <FieldTimeOutlined className={'mr-1'}/>
+                        <span>2021-01-21</span>
+                    </div>
+                    <NavLink
+                        to={'/categories'}
+                        className={'contents text-black'}
+                    >
                         <div className={'mr-2'}>
                             <FolderOutlined className={'mr-1'}/>
                             <span>技术博客</span>
                         </div>
-                        <div className={'mr-1'}>
-                            <EyeOutlined className={'mr-1'}/>
-                            <span>123</span>
-                        </div>
-                        <div>
-                            <CommentOutlined className={'m-1'}/>
-                            <span>123</span>
-                        </div>
+                    </NavLink>
+                    <div className={'mr-1'}>
+                        <EyeOutlined className={'mr-1'}/>
+                        <span>123</span>
+                    </div>
+                    <div>
+                        <CommentOutlined className={'m-1'}/>
+                        <span>123</span>
                     </div>
                 </div>
-            </Card>
-        </NavLink>
+            </div>
+        </Card>
+
     )
 };
 

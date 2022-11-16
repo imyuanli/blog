@@ -47,21 +47,11 @@ function App() {
             name: '首页',
             icon: <HomeOutlined/>,
         },
-        // {
-        //     path: '/categories',
-        //     name: '分类',
-        //     icon: <FolderOutlined/>,
-        // },
-        // {
-        //     path: '/tags',
-        //     name: '标签',
-        //     icon: <TagsOutlined/>,
-        // },
         {
             path: '/message',
             name: '留言',
             icon: <MessageOutlined/>,
-        },
+        }
         // {
         //     path: '/links',
         //     name: '友链',
@@ -71,7 +61,7 @@ function App() {
         //     path: '/about',
         //     name: '关于',
         //     icon: <ExclamationCircleOutlined/>,
-        // },
+        // }
     ]
 
     //移动端
@@ -125,7 +115,19 @@ function App() {
                                 <div className={'flex flex-col'}>
                                     <NavLink
                                         to={'/'}
-                                        className={'text-base mr-3'}
+                                        className={'text-base'}
+                                    >
+                                        分享
+                                    </NavLink>
+                                    <NavLink
+                                        to={'/'}
+                                        className={'text-base'}
+                                    >
+                                        分享
+                                    </NavLink>
+                                    <NavLink
+                                        to={'/'}
+                                        className={'text-base'}
                                     >
                                         分享
                                     </NavLink>
