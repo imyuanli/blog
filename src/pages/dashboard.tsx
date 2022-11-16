@@ -12,6 +12,9 @@ const Dashboard = () => {
             <ArticleCard/>
             <ArticleCard/>
             <ArticleCard/>
+            <div className={'mb-2 cursor-pointer'}>
+                加载更多
+            </div>
         </div>
     )
 }
