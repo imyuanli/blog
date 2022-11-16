@@ -12,7 +12,7 @@ import {
     HomeOutlined, LinkOutlined, MenuFoldOutlined, MenuOutlined, MenuUnfoldOutlined, MessageOutlined, RocketOutlined,
     SearchOutlined, TagsOutlined
 } from "@ant-design/icons";
-import {BackTop, Button, ConfigProvider, Drawer, List, Input, Tooltip, Select, Popover} from "antd";
+import {BackTop, Button, ConfigProvider, Drawer, List, Input, Tooltip, Select, Popover, Modal} from "antd";
 import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 import ProFile from "./components/profile";
@@ -73,6 +73,10 @@ function App() {
     const userName = 'YuanLi'
 
     //搜索
+    const [searchVisible, setSearchVisible] = useState(false);
+    const toggleShowSearch = () => {
+        setSearchVisible(!searchVisible)
+    }
     const onSearch = (value: string) => {
         console.log(value)
     }
@@ -85,6 +89,10 @@ function App() {
                         onDoubleClick={() => {
                             navigate('/editor')
                         }}
+                        onClick={() => {
+                            navigate('/')
+                        }}
+                        className={'cursor-pointer'}
                     >
                         {userName}
                     </div>
@@ -135,9 +143,17 @@ function App() {
                             }
                             trigger="click"
                         >
-                            <Button className={'rounded-lg mr-3 bg-green-500 text-white'} icon={<FolderOutlined/>}/>
+                            <Button
+                                className={'rounded-lg mr-3 bg-green-500 text-white'}
+                                icon={<FolderOutlined/>}
+                            />
                         </Popover>
-                        <Button className={'rounded-lg mr-3 bg-green-500 text-white'} icon={<SearchOutlined/>}/>
+                        <Tooltip placement="bottom" title={'搜索'}>
+                            <Button onClick={toggleShowSearch}
+                                    className={'rounded-lg mr-3 bg-green-500 text-white'}
+                                    icon={<SearchOutlined/>}
+                            />
+                        </Tooltip>
                         {
                             prefix == 'custom-dark' ?
                                 <Tooltip placement="bottom" title={'切换到光'}>
@@ -161,9 +177,7 @@ function App() {
                         <Button
                             className={'rounded-lg bg-green-500 text-white ml-3 block sm:hidden'}
                             onClick={toggleCollapsed}
-                            icon={
-                                <MenuOutlined/>
-                            }
+                            icon={<MenuOutlined/>}
                         />
                     </div>
                 </div>
@@ -199,6 +213,14 @@ function App() {
                     )}
                 />
             </Drawer>
+            <Modal
+                title={'搜索一下吧'}
+                open={searchVisible}
+                footer={null}
+                onCancel={toggleShowSearch}
+            >
+                123123
+            </Modal>
         </ConfigProvider>
     )
 }
