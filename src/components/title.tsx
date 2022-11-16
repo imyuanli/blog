@@ -7,7 +7,7 @@ interface props {
 
 const Title: React.FunctionComponent<props> = ({title, describe}) => {
     return (
-        <div className={'w-full flex flex-col justify-center items-center mb-9'}>
+        <div className={'w-full flex flex-col justify-center items-center mb-6'}>
             <div className={'text-4xl relative username mb-1'}>{title}</div>
             {describe && <i className={'text-lg'}>{describe}</i>}
         </div>

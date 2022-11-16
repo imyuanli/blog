@@ -183,7 +183,7 @@ function App() {
                         </div>
                     </div>
                     <div style={{paddingTop: 54}} className={'w-full flex justify-center items-center'}>
-                        <div style={{maxWidth: 880}} className={'w-full py-9 px-3'}>
+                        <div style={{maxWidth: 880}} className={'w-full py-6 px-3'}>
                             {views}
                         </div>
                     </div>

@@ -11,7 +11,7 @@ interface props {
 
 const ProFile: React.FunctionComponent<props> = ({userName}) => {
     return (
-        <div className={'w-full flex flex-col justify-center items-center mb-9'}>
+        <div className={'w-full flex flex-col justify-center items-center mb-6'}>
             <Avatar size={64} src={imgUrl}/>
             <div className={'w-full flex flex-col justify-center items-center mb-2'}>
                 <div className={'text-4xl relative username mb-1'}>YuanLi</div>
