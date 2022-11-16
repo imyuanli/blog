@@ -18,26 +18,27 @@ interface props {
 
 const ArticleCard: React.FunctionComponent<props> = () => {
     return (
-
         <Card className={'w-full p-2 rounded-xl shadow-md mb-6 hover:shadow-lg duration-300'}>
             <NavLink
                 to={'article/12'}
                 className={'contents'}
                 style={{color: '#37475b'}}
             >
-                <div className={'text-2xl font-semibold mb-6 truncate overflow-hidden'}>
-                    Card 组件Card 组件Card
-                    组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card
-                    组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件
-                </div>
-                <div className={'flex mb-3'}>
-                    <img src={imgUrl} className={'w-20 h-20 md:w-24 md:h-24 object-cover mr-3'} alt=""/>
-                    <p className={'text-base over-line'}>
-                        描述描述描述描述描述描述描述描述描述描述描述描述
-                        描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
-                        描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
-                        描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
-                    </p>
+                <div>
+                    <div className={'text-2xl font-semibold mb-6 truncate overflow-hidden'}>
+                        Card 组件Card 组件Card
+                        组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card
+                        组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件Card 组件
+                    </div>
+                    <div className={'flex mb-3'}>
+                        <img src={imgUrl} className={'w-20 h-20 md:w-24 md:h-24 object-cover mr-3'} alt=""/>
+                        <p className={'text-base over-line'}>
+                            描述描述描述描述描述描述描述描述描述描述描述描述
+                            描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
+                            描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
+                            描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述
+                        </p>
+                    </div>
                 </div>
             </NavLink>
             <div className={'flex'}>

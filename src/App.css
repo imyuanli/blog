@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.App{
+.App {
     min-height: 100vh;
 }
-.header{
+
+.App::before {
+    content: "";
+    filter: blur(6px);
+    background: url('https://i.loli.net/2019/05/07/5cd0fc2774178.jpg') center/cover no-repeat;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    position: fixed;
+    overflow: hidden;
+    opacity:.4;
+}
+
+.header {
     font-size: 22px;
     font-weight: 450;
     border-radius: 5px;
@@ -23,7 +39,7 @@
     backdrop-filter: blur(10px);
 }
 
-.content{
+.content {
     max-width: 880px;
     width: 90%;
 }
@@ -47,16 +63,16 @@
 }
 
 
-.over-line{
+.over-line {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp:3;
+    -webkit-line-clamp: 3;
 }
 
 @media screen and (min-width: 768px) {
-    .over-line{
-        -webkit-line-clamp:4;
+    .over-line {
+        -webkit-line-clamp: 4;
     }
 }
