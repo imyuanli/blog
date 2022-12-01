@@ -15,10 +15,10 @@ import * as dayjs from 'dayjs'
 
 interface props {
     article: any,
-    classifyList: any
+    classify: any
 }
 
-const ArticleCard: React.FunctionComponent<props> = ({article, classifyList}) => {
+const ArticleCard: React.FunctionComponent<props> = ({article, classify}) => {
     const {
         article_id,
         title,
@@ -35,11 +35,6 @@ const ArticleCard: React.FunctionComponent<props> = ({article, classifyList}) =>
     } = article
 
 
-    const getClassifyTitle = (name: string) => {
-        return classifyList.find((item: any) => {
-            return item.classify_name == name
-        })
-    }
     return (
         <Card className={'w-full p-2 rounded-xl shadow-md mb-6 hover:shadow-lg duration-300'}>
             <NavLink
@@ -69,7 +64,7 @@ const ArticleCard: React.FunctionComponent<props> = ({article, classifyList}) =>
                     >
                         <div className={'mr-2'}>
                             <FolderOutlined className={'mr-1'}/>
-                            <span>{getClassifyTitle(classify_name)?.classify_title}</span>
+                            <span>{classify?.classify_title}</span>
                         </div>
                     </NavLink>
                     <div className={'mr-1'}>

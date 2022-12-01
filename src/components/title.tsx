@@ -1,15 +1,14 @@
 import React from 'react';
 
 interface props {
-    title: string,
-    describe?: string,
+    value: any
 }
 
-const Title: React.FunctionComponent<props> = ({title, describe}) => {
+const Title: React.FunctionComponent<props> = ({value}) => {
     return (
         <div className={'w-full flex flex-col justify-center items-center mb-6'}>
-            <div className={'text-4xl relative username mb-1'}>{title}</div>
-            {describe && <i className={'text-lg'}>{describe}</i>}
+            <div className={'text-4xl relative username mb-1'}>{`"${value?.classify_title}"`}</div>
+            {value?.classify_describe && <i className={'text-lg'}>{value?.classify_describe}</i>}
         </div>
     )
 };
