@@ -22,6 +22,10 @@ const routes: RouteObject[] = [
         element: lazyLoad("dashboard")
     },
     {
+        path: '/:name',
+        element: lazyLoad("dashboard")
+    },
+    {
         path: '/article/:id',
         element: lazyLoad("article")
     },
@@ -40,10 +44,6 @@ const routes: RouteObject[] = [
     {
         path: '/login',
         element: lazyLoad("login")
-    },
-    {
-        path: '/categories/:category',
-        element: lazyLoad("categories")
     },
     {
         path: '*',
