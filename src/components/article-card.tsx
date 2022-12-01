@@ -64,7 +64,7 @@ const ArticleCard: React.FunctionComponent<props> = ({article, classifyList}) =>
                         <span>{dayjs(create_time).format('YYYY-MM-DD')}</span>
                     </div>
                     <NavLink
-                        to={'/categories'}
+                        to={`/${classify_name}`}
                         className={'contents text-black'}
                     >
                         <div className={'mr-2'}>
