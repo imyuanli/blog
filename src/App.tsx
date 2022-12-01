@@ -5,7 +5,7 @@ import "./theme/custom-default.css";
 import "./theme/custom-dark.css";
 import './index.css';
 import routes from "./router";
-import {NavLink, useNavigate, useRoutes} from "react-router-dom";
+import {NavLink, useNavigate, useParams, useRoutes} from "react-router-dom";
 import {
     ExclamationCircleOutlined,
     FileTextOutlined, FolderOutlined,
@@ -17,6 +17,7 @@ import {useLocalStorageState} from "ahooks";
 import {IconFont} from './utils/util'
 import ProFile from "./components/profile";
 import {useEffect, useState} from "react";
+import {get_articles_list, get_classify_list} from "./service/service";
 
 const {Search} = Input;
 
@@ -81,6 +82,17 @@ function App() {
         console.log(value)
     }
     const navigate = useNavigate()
+
+
+    //分类列表
+    const [classifyList, setClassifyList] = useState([])
+
+    //获取分类
+    useEffect(() => {
+        get_classify_list().then((res) => {
+            setClassifyList(res)
+        })
+    }, [])
     return (
         <ConfigProvider prefixCls={prefix}>
             <div className={`App ${prefix}`}>
@@ -122,24 +134,17 @@ function App() {
                             <Popover
                                 content={
                                     <div className={'flex flex-col'}>
-                                        <NavLink
-                                            to={'/'}
-                                            className={'text-base'}
-                                        >
-                                            分享
-                                        </NavLink>
-                                        <NavLink
-                                            to={'/'}
-                                            className={'text-base'}
-                                        >
-                                            分享
-                                        </NavLink>
-                                        <NavLink
-                                            to={'/'}
-                                            className={'text-base'}
-                                        >
-                                            分享
-                                        </NavLink>
+                                        {
+                                            classifyList.map((item: any, index) => (
+                                                <NavLink
+                                                    to={`/${item?.classify_name}`}
+                                                    className={'text-base text-green-500'}
+                                                    key={index}
+                                                >
+                                                    {item?.classify_title}
+                                                </NavLink>
+                                            ))
+                                        }
                                     </div>
                                 }
                                 trigger="click"
