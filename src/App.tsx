@@ -192,8 +192,8 @@ function App() {
                             {views}
                         </div>
                     </div>
-                    <BackTop style={{right: '30px'}}>
-                        <RocketOutlined className={'text-4xl'}/>
+                    <BackTop style={{right: '10px'}}>
+                        <RocketOutlined style={{color:'#0e6db1'}} className={'text-4xl '}/>
                     </BackTop>
                 </div>
             </div>

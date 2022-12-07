@@ -17,34 +17,10 @@ import * as dayjs from "dayjs";
 function Article() {
     const params = useParams()
     const articleId = params?.id
-    const serverURL = 'https://waline-27yxp2m9l-imyuanli.vercel.app/';
+    const serverURL = 'https://waline.imyuanli.cn/';
     const location = useLocation()
     const path = location?.pathname
     const [article, setArticle] = useState<any>({})
-    //
-    //     :
-    //     "a9a5a15c-6ddb-4bfa-9495-d507d0545fea"
-    // classify_name
-    //     :
-    //     "tech"
-    // classify_title
-    //     :
-    //     "做个技术宅"
-    //
-    //     :
-    //     "asdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdadasdad"
-    // keywords
-    //     :
-    //     null
-    // type
-    //     :
-    //     "原创"
-    // update_time
-    //     :
-    //     "2022-11-29T18:20:28.453"
-    // view_count
-    //     :
-    //     "0"
     //获取文章数据
     useEffect(() => {
         get_article({articleId}).then((res) => {
@@ -104,16 +80,16 @@ function Article() {
                     <div className={'flex justify-between'}>
                         {
                             article?.pre_article ?
-                            <NavLink
-                                to={`/article/${article?.pre_article?.article_id}`}
-                                className={'contents'}
-                                style={{color: '#37475b'}}
-                            >
-                                <div className={'cursor-pointer hover:text-blue-400'}>
-                                    <CaretLeftOutlined/>
-                                    <span>{article?.pre_article?.title}</span>
-                                </div>
-                            </NavLink>
+                                <NavLink
+                                    to={`/article/${article?.pre_article?.article_id}`}
+                                    className={'contents'}
+                                    style={{color: '#37475b'}}
+                                >
+                                    <div className={'cursor-pointer hover:text-blue-400'}>
+                                        <CaretLeftOutlined/>
+                                        <span>{article?.pre_article?.title}</span>
+                                    </div>
+                                </NavLink>
                                 :
                                 <div></div>
                         }
