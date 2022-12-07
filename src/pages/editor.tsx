@@ -2,17 +2,20 @@ import '@wangeditor/editor/dist/css/style.css' // 引入 css
 import React, {useState, useEffect, useRef} from 'react'
 // @ts-ignore
 import {Editor, Toolbar} from '@wangeditor/editor-for-react'
+import type { RcFile, UploadFile, UploadProps,UploadChangeParam } from 'antd/es/upload/interface';
 import {IDomEditor, IEditorConfig, IToolbarConfig} from '@wangeditor/editor'
 import {
-    Button, Card,
+    Button,
     DatePicker,
-    Input,
+    Input, message,
     Modal,
     Select,
     Upload
 } from "antd";
 import {LoadingOutlined, PlusCircleOutlined, PlusOutlined} from "@ant-design/icons";
 import {useSetState} from "ahooks";
+import {BASE_URL} from "../service/service";
+import {qiniuUrl} from "../utils/util";
 
 function MyEditor() {
     // editor 实例
@@ -51,14 +54,45 @@ function MyEditor() {
     )
 
     //上传图片
-    const [imageUrl, setImgUrl] = useState(null)
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState<string>();
     const uploadButton = (
         <div>
             {loading ? <LoadingOutlined/> : <PlusOutlined/>}
             <div style={{marginTop: 8}}>Upload</div>
         </div>
     );
+    const getBase64 = (img: RcFile, callback: (url: string) => void) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result as string));
+        reader.readAsDataURL(img);
+    };
+
+    const beforeUpload = (file: RcFile) => {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG file!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('Image must smaller than 2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    };
+    const handleChange: UploadProps['onChange'] = (info: UploadChangeParam<UploadFile>) => {
+        if (info.file.status === 'uploading') {
+            setLoading(true);
+            return;
+        }
+        if (info.file.status === 'done') {
+            const imgUrl = info?.file.response.data
+            getBase64(info.file.originFileObj as RcFile, res => {
+                setLoading(false);
+                setImageUrl(imgUrl);
+            });
+        }
+    };
+
 
     //modal打开关闭
     const [isModalOpen, setInputVisible] = useState(false);
@@ -150,15 +184,14 @@ function MyEditor() {
                     </div>
                     <div>
                         <Upload
-                            name="avatar"
                             listType="picture-card"
                             className="avatar-uploader"
                             showUploadList={false}
-                            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                            // beforeUpload={beforeUpload}
-                            // onChange={handleChange}
+                            action={BASE_URL+'/upload_image_to_qiniu/'}
+                            onChange={handleChange}
+                            beforeUpload={beforeUpload}
                         >
-                            {imageUrl ? <img src={imageUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+                            {imageUrl ? <img src={qiniuUrl+imageUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
                         </Upload>
                     </div>
                 </div>

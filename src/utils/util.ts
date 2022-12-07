@@ -6,14 +6,15 @@ export const IconFont = createFromIconfontCN({
     ],
 });
 
-export const goToGitHUb=()=>{
+export const qiniuUrl = 'http://cdn.imyuanli.cn/'
+export const goToGitHUb = () => {
     window.location.href = 'https://github.com/imyuanli'
 }
 
-export const goToMail=()=>{
+export const goToMail = () => {
     window.location.href = 'mailto:2865437316@qq.com'
 }
 
-export const goToCSDN=()=>{
+export const goToCSDN = () => {
     window.location.href = 'https://blog.csdn.net/qq_44259670'
 }

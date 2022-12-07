@@ -34,9 +34,7 @@ function request(url, data = {}, method = 'GET') {
             if (res.status === HTTP_STATUS.SUCCESS) {
                 if (res.data.errno === 0) {
                     resolve(res.data.data);
-                } else if (res.data.errno === 1009) {
-                    message.error(res.data.errmsg)
-                } else if (res.data.errno === 99) {
+                } else if (res.data.errno === 502) {
                     message.error(res.data.errmsg)
                 }
             }
