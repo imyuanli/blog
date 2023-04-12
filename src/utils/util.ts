@@ -6,15 +6,24 @@ export const IconFont = createFromIconfontCN({
     ],
 });
 
-export const qiniuUrl = 'http://cdn.imyuanli.cn/'
-export const goToGitHUb = () => {
-    window.location.href = 'https://github.com/imyuanli'
+export const metadata={
+    author:'鸢离',
+    title:'YuanLi\'s Blog',
+    email:'2865437316@qq.com',
+    github:'https://github.com/imyuanli',
+    qq:'2865437316',
 }
 
-export const goToMail = () => {
-    window.location.href = 'mailto:2865437316@qq.com'
-}
-
-export const goToCSDN = () => {
-    window.location.href = 'https://blog.csdn.net/qq_44259670'
-}
+// export const qiniuUrl = 'http://cdn.imyuanli.cn/'
+//
+// export const goToGitHUb = () => {
+//     window.location.href = 'https://github.com/imyuanli'
+// }
+//
+// export const goToMail = () => {
+//     window.location.href = 'mailto:2865437316@qq.com'
+// }
+//
+// export const goToCSDN = () => {
+//     window.location.href = 'https://blog.csdn.net/qq_44259670'
+// }
