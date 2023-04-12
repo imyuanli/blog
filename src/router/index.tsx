@@ -2,8 +2,8 @@ import React, {lazy, Suspense} from 'react'
 import {RouteObject} from 'react-router-dom'
 import {Spin} from "antd";
 // 路由懒加载
-const lazyLoad = (path: string) => {
-    const Comp = lazy(() => import(`../pages/${path}`))
+const lazyLoad = (path: any) => {
+    const Comp = lazy(() => import(`../pages/${path}.tsx`))
 
     return (
         <Suspense fallback={
