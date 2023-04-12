@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #14B8A6;
+}
+
+a:hover {
+    color: #0D9488;
+}
+
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.App::before {*/
+/*    content: "";*/
+/*    background: url('https://api.paugram.com/wallpaper/') center/cover no-repeat;*/
+/*    width: 100%;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    display: block;*/
+/*    position: fixed;*/
+/*    overflow: hidden;*/
+/*    opacity: .1;*/
+/*    z-index: -1;*/
+/*}*/
